@@ -14,7 +14,9 @@ class dataset():
 		self.num_labels = 2
 
 def load_images(path_to_sequence):
-	return [os.path.join(path_to_sequence, img) for img in os.listdir(path_to_sequence)]
+	res = [os.path.join(path_to_sequence, img) for img in os.listdir(path_to_sequence)]
+	res.sort()
+	return res
 
 def get_cam_param(ins):
 	if ins < 3:
@@ -62,6 +64,7 @@ if __name__ == '__main__':
 	print(left_filenames[0])
 	print(depth_filenames[0])
 	print(save_path)
+	print(len(left_filenames))
 	# if you want to use your own data, please modify rgb_image, depth_image, camParam and use_size correspondingly.
 	for i in range(len(left_filenames)):
 		rgb_image = cv.cvtColor(cv.imread(left_filenames[i]), cv.COLOR_BGR2RGB)
