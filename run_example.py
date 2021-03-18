@@ -53,7 +53,7 @@ if __name__ == '__main__':
 	file_path = os.path.join(opt.data_path, opt.sequence, 'image_2')
 	left_filenames = load_images(file_path)
 
-	depth_path = os.path.join(opt.data_path, opt.sequence)
+	depth_path = os.path.join(opt.depth_path, opt.sequence)
 	depth_filenames = load_images(file_path)
 
 	save_path = os.path.join(opt.save_path, opt.sequence)
