@@ -59,7 +59,9 @@ if __name__ == '__main__':
 	save_path = os.path.join(opt.save_path, opt.sequence)
 
 	camParam, bf = get_cam_param(int(opt.sequence))
-
+	print(left_filenames[0])
+	print(depth_filenames[0])
+	print(save_path)
 	# if you want to use your own data, please modify rgb_image, depth_image, camParam and use_size correspondingly.
 	for i in range(len(left_filenames)):
 		rgb_image = cv.cvtColor(cv.imread(left_filenames[i]), cv.COLOR_BGR2RGB)
