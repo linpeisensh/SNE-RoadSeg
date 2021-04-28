@@ -63,10 +63,6 @@ if __name__ == '__main__':
 		save_path = os.path.join(opt.save_path, opt.sequence)
 
 		camParam, bf = get_cam_param(int(opt.sequence))
-		print(left_filenames[0])
-		print(depth_filenames[0])
-		print(save_path)
-		print(len(left_filenames))
 		# if you want to use your own data, please modify rgb_image, depth_image, camParam and use_size correspondingly.
 		for i in range(len(left_filenames)):
 			rgb_image = cv.cvtColor(cv.imread(left_filenames[i]), cv.COLOR_BGR2RGB)
@@ -101,8 +97,8 @@ if __name__ == '__main__':
 
 				palet_file = 'datasets/palette.txt'
 				impalette = list(np.genfromtxt(palet_file, dtype=np.uint8).reshape(3 * 256))
-				pred_img = tensor2labelim(pred, impalette)
-				pred_img = cv.resize(pred_img, oriSize)
+				# pred_img = tensor2labelim(pred, impalette)
+				# pred_img = cv.resize(pred_img, oriSize)
 				prob_map = tensor2confidencemap(pred)
 				prob_map = cv.resize(prob_map, oriSize)
 				# cv.imwrite(os.path.join('examples', 'pred.png'), pred_img)
