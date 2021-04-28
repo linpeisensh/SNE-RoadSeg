@@ -8,6 +8,7 @@ import torch
 import numpy as np
 import cv2 as cv
 import traceback
+import shutil
 
 
 class dataset():
@@ -61,6 +62,9 @@ if __name__ == '__main__':
 		depth_filenames = load_images(depth_path)
 
 		save_path = os.path.join(opt.save_path, opt.sequence)
+		if os.path.exists(save_path):
+			shutil.rmtree(save_path)
+		os.mkdir(save_path)
 
 		camParam, bf = get_cam_param(int(opt.sequence))
 		# if you want to use your own data, please modify rgb_image, depth_image, camParam and use_size correspondingly.
