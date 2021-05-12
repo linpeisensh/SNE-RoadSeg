@@ -48,31 +48,13 @@ SNE-RoadSeg
 ## Usage
 
 ### Run an example ###
-We provide one example in `examples`. To run it, you only need to setup the `checkpoints` folder as mentioned above. Then, run the following script:
-```
-bash ./scripts/run_example.sh
-```
-and you will see `normal.png`, `pred.png` and `prob_map.png` in `examples`. `normal.png` is the normal estimation by our SNE; `pred.png` is the freespace prediction by our SNE-RoadSeg; and `prob_map.png` is the probability map predicted by our SNE-RoadSeg.
+- Execute the following command.
 
-### Testing for KITTI submission
-For KITTI submission, you need to setup the `checkpoints` and the `datasets/kitti/testing` folder as mentioned above. Then, run the following script:
+example:
 ```
-bash ./scripts/test.sh
+python run_example.py --sequence='00'
 ```
-and you will get the prediction results in `testresults`. After that you can follow the [submission instructions](http://www.cvlibs.net/datasets/kitti/eval_road.php) to transform the prediction results into the BEV perspective for submission.
 
-If everything works fine, you will get a MaxF score of **96.74** for **URBAN**. Note that this is our re-implemented weights, and it is very similar to the reported ones in the paper (a MaxF score of **96.75** for **URBAN**).
-
-### Training on the KITTI dataset
-For training, you need to setup the `datasets/kitti` folder as mentioned above. You can split the original training set into a new training set and a validation set as you like. Then, run the following script:
-```
-bash ./scripts/train.sh
-```
-and the weights will be saved in `checkpoints` and the tensorboard record containing the loss curves as well as the performance on the validation set will be save in `runs`. Note that `use-sne` in `train.sh` controls if we will use our SNE model, and the default is True. If you delete it, our RoadSeg will take depth images as input, and you also need to delete `use-sne` in `test.sh` to avoid errors when testing.
-
-
-
-## Citation
 If you use this code for your research, please cite our paper.
 ```
 @inproceedings{fan2020sne,
